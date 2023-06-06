@@ -1,28 +1,33 @@
 <!-- Header -->
-<?php include('header.php') ?>
+<?php include('header.php');
 
-<!-- Tableau des oeuvres -->
-<?php include('oeuvres.php') ?>
+// Tableau des oeuvres
+include('oeuvres.php');
+?>
 
 <main>
-    <?php //var_dump($_GET['oeuvre']); 
-    //echo $_GET['oeuvre'];
-    //var_dump($oeuvres);
-    //echo $oeuvres[$_GET['oeuvre']]['image'];
+    <?php
+
+    $id =$_GET['oeuvre'];
+
+    if (array_key_exists($id, $oeuvres))
+    {
+        echo '<article id="detail-oeuvre">
+                <div id="img-oeuvre">
+                    <img src="' . $oeuvres[$id]['image'] . '" alt="' . $oeuvres[$id]['titre'] . '">
+                </div>
+                <div id="contenu-oeuvre">
+                    <h1>' . $oeuvres[$id]['titre'] . '</h1>
+                    <p class="description">' . $oeuvres[$id]['artiste'] . '</p>
+                    <p class="description-complete">' . $oeuvres[$id]['description'] . '</p>
+                </div>
+            </article>';
+    } else {
+        echo 'L\'oeuvre ' . $id . ' n\'existe pas';
+    }
+
     ?>
 
-    <article id="detail-oeuvre">
-        <div id="img-oeuvre">
-            <img src="<?php echo $oeuvres[$_GET['oeuvre']]['image']; ?>" alt="<?php echo $oeuvres[$_GET['oeuvre']]['titre']; ?>">
-        </div>
-        <div id="contenu-oeuvre">
-            <h1><?php echo $oeuvres[$_GET['oeuvre']]['titre']; ?></h1>
-            <p class="description"><?php echo $oeuvres[$_GET['oeuvre']]['artiste']; ?></p>
-            <p class="description-complete">
-            <?php echo $oeuvres[$_GET['oeuvre']]['description']; ?>
-            </p>
-        </div>
-    </article>
 </main>
 
 <!-- Footer -->

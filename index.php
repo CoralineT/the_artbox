@@ -1,8 +1,9 @@
 <!-- Header -->
-<?php include('header.php'); ?>
+<?php include('header.php');
 
-<!-- Tableau des oeuvres -->
-<?php include('oeuvres.php'); ?>
+// Tableau des oeuvres
+include('oeuvres.php'); 
+?>
 
     <main>
         <div id="liste-oeuvres">
